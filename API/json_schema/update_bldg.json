@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "update_bldg",
+  "type": "object",
+  "description": "Update building info given the building's ID.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ID of the building to be changed."
+    },
+    "name": {
+      "type": "string",
+      "description": "New name of the building, also unique, but modifiable. Optional."
+    },
+    "description": {
+      "type": "string",
+      "description": "New description of the building. Optional."
+    }
+  },
+  "required": [
+    "id"
+  ]
+}

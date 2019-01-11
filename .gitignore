@@ -1,0 +1,11 @@
+# LaTeX temp files
+*.aux
+*.bbl
+*.log
+
+# Python
+API/doc/__pycache__/
+
+
+# Random temp files
+API/Example_json_parser.txt

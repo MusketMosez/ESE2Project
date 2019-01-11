@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "sensor_logs",
+  "type": "object",
+  "description": "All logs from a sensor in some period of time",
+  "properties": {
+    "sensor_id": {
+      "type": "string",
+      "description": "The id of the corresponding sensor"
+    },
+    "unit":{
+      "type": "string",
+      "description": "The unit in which the logs are recorded"
+    },
+    "logs": {
+      "type": "array",
+      "description": "An array of the logs",
+      "items": {
+        "$ref": "file:log.json"
+      }
+    }
+  },
+  "required": [
+    "sensor_id",
+    "unit",
+    "logs"
+  ]
+}

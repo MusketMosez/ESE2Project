@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "room_logs",
+  "type": "object",
+  "description": "Sets of logs of all sensors in the room",
+  "properties": {
+    "room_id": {
+      "type": "string",
+      "description": "The id of the room"
+    },
+    "sensor_logs": {
+      "type": "array",
+      "description": "An array of all sensor logs",
+      "items": {
+        "$ref": "file:sensor_logs.json"
+      }
+    }
+  },
+  "required": [
+    "room_id",
+    "sensor_logs"
+  ]
+}

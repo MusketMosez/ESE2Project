@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "get_bldg_by_name",
+  "type": "object",
+  "description": "Get building by its name",
+  "properties": {
+    "bldg": {
+      "$ref": "file:bldg.json",
+      "description": "The requested building"
+    }
+  },
+  "required": [
+    "bldg"
+  ]
+}

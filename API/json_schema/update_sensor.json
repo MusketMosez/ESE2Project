@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "update sensor",
+  "type": "object",
+  "description": "Update sensor info given the sensor's ID.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Id of the sensor to be changed."
+    },
+    "name": {
+      "type": "string",
+      "description": "New name of the sensor, optional."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the room, optional."
+    },
+    "unit": {
+      "type": "string",
+      "description": "New units, use with care, optional, we should discuss if this should be allowed and if so, how to handle old data."
+    }
+  },
+  "required": [
+    "id"
+  ]
+}

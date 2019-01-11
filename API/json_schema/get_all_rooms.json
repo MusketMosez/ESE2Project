@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "get_all_rooms",
+  "type": "object",
+  "description": "List all available rooms",
+  "properties": {
+    "rooms": {
+      "type": "array",
+      "description": "An array of all available rooms",
+      "items": {
+        "$ref": "file:room.json"
+      }
+    }
+  },
+  "required": [
+    "rooms"
+  ]
+}

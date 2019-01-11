@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "get_room_by_name",
+  "type": "object",
+  "description": "Get room by its name",
+  "properties": {
+    "room": {
+      "$ref": "file:room.json",
+      "description": "The requested room"
+    }
+  },
+  "required": [
+    "room"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "get_sensors_in_room",
+  "type": "object",
+  "description": "List all sensors in the room",
+  "properties": {
+    "room_id": {
+      "type": "string",
+      "description": "The ID of the room"
+    },
+    "sensors": {
+      "type": "array",
+      "description": "An array of all sensorr in the room",
+      "items": {
+        "$ref": "file:sensor.json"
+      }
+    }
+  },
+  "required": [
+    "room_id",
+    "sensors"
+  ]
+}

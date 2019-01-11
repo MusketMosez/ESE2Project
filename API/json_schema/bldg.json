@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "bldg",
+  "type": "object",
+  "description": "Building",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the building"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the building, also unique, but modifiable"
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the building"
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ]
+}

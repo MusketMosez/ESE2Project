@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "update_room",
+  "type": "object",
+  "description": "Update room info given the room's ID.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ID of the room to be changed."
+    },
+    "name": {
+      "type": "string",
+      "description": "New name of the room, must be unique. Optional"
+    },
+    "description": {
+      "type": "string",
+      "description": "New description of the room."
+    }
+  },
+  "required": [
+    "id"
+  ]
+}

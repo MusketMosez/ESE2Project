@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "get_all_rooms_logs",
+  "type": "object",
+  "description": "All logs from each sensor in each room, within the given period [start_millis, end_millis)",
+  "properties": {
+    "start_millis": {
+      "type": "number",
+      "description": "The start of the period, included, in milliseconds from the Epoch"
+    },
+    "end_millis": {
+      "type": "number",
+      "description": "The end of the period, excluded, in milliseconds from the Epoch"
+    },
+    "rooms_logs": {
+      "type": "array",
+      "description": "An array of the room logs",
+      "items": {
+        "$ref": "file:room_logs.json"
+      }
+    }
+  },
+  "required": [
+    "start_millis",
+    "end_millis",
+    "rooms_logs"
+  ]
+}
