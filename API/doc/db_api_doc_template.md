@@ -64,7 +64,7 @@ e.g. new buildings, rooms and sensors.
 <!---write_add-->
 
 ### Log data
-These requests are for measured values into the database.
+These requests are for saving measured values into the database.
 <!---write_log-->
 
 </blockquote></details>

@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "sensor_logs",
+  "type": "object",
+  "description": "Save multiple logs from multiple sensors.",
+  "properties": {
+    "logs": {
+      "type": "array",
+      "description": "An array of the logs and the corresponding sensors",
+      "items": {
+        "$ref": "file:save_log.json"
+      }
+    }
+  },
+  "required": []
+}

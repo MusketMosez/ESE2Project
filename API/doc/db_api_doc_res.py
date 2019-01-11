@@ -3,6 +3,7 @@ class DbApiDocRes:
     jsonFile_to_dict = {}
 
     def __init__(self):
+        # List of all methods
         self.cats = {"read_objects": {
             "get_all_rooms": {
                 "status": "DESIGNED",
@@ -73,34 +74,34 @@ class DbApiDocRes:
             },
         }, "control_controllers": {}, "write_add": {
             "add_bldg": {
-                "status": "UNDESIGNED"
+                "status": "DESIGNED",
+                "request": "POST",
+                "response": ["bldg_id"]
             },
             "add_room": {
-                "status": "UNDESIGNED"
+                "status": "DESIGNED",
+                "request": "POST",
+                "response": ["room_id"]
             },
             "add_sensor": {
-                "status": "UNDESIGNED"
+                "status": "DESIGNED",
+                "request": "POST",
+                "response": ["sensor_id"]
             },
 
         }, "write_log": {
-            "log": {
-                "status": "UNDESIGNED"
+            "save_log": {
+                "status": "DESIGNED",
+                "request": "POST",
+            },
+            "save_logs": {
+                "status": "DESIGNED",
+                "request": "POST",
             },
         }, "authentication": {}}
 
-        self.jsonFile_to_dict = {"room": {}, "sensor": {}, "bldg": {}, "get_all_rooms": {}, "log": {},
-                                 "sensor_logs": {},
-                                 "update_bldg": {}, "update_room": {}, "update_sensor": {}, }
-
-        def get_value_from_dict(self, filename, i=0):
-            expJson = {}
-            if filename not in self.jsonFile_to_dict:
-                raise Exception("There is no mock data for %s" % filename)
-            jsonDict = self.jsonFile_to_dict[filename]
-            for item in jsonDict:
-                expJson.update({item: jsonDict[item][i]})
-
-            return expJson
+        # Dummy data for example jsons
+        self.jsonFile_to_dict = {}
 
         self.jsonFile_to_dict["room"] = {
             "id": ["b02r01", "b01r02", "b03r03"],
@@ -234,12 +235,19 @@ class DbApiDocRes:
             "unit": ["percents of BoydOrr", "CELSIUS", ""]
         }
 
+        self.jsonFile_to_dict["add_bldg"] = {}
+        self.jsonFile_to_dict["add_room"] = {}
+        self.jsonFile_to_dict["add_sensor"] = {}
+
+        self.jsonFile_to_dict["save_log"] = {}
+        self.jsonFile_to_dict["save_logs"] = {}
+
     def get_value_from_dict(self, filename, i=0):
-        expJson = {}
+        exp_json = {}
         if filename not in self.jsonFile_to_dict:
             raise Exception("There is no mock data for %s" % filename)
-        jsonDict = self.jsonFile_to_dict[filename]
-        for item in jsonDict:
-            expJson.update({item: jsonDict[item][i]})
+        json_dict = self.jsonFile_to_dict[filename]
+        for item in json_dict:
+            exp_json.update({item: json_dict[item][i]})
 
-        return expJson
+        return exp_json

@@ -919,34 +919,226 @@ e.g. new buildings, rooms and sensors.
 <li> add_bldg
 <details><blockquote>
 <ul>
-<li> status: undesigned
+<li> status: designed
 <li> url: base.url/db/api/add_bldg
+<li>request method: POST<li> example json request:
+<pre><code>{}
+</code></pre>
+<li> request json schema:
+<pre><code>{
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "title": "add_bldg",
+   "type": "object",
+   "description": "Add new building to the network.",
+   "properties": {
+      "name": {
+         "type": "string",
+         "description": "Name of the building, also unique, but modifiable. Optional."
+      },
+      "description": {
+         "type": "string",
+         "description": "Description of the building. Optional."
+      }
+   },
+   "required": []
+}
+</code></pre>
+<li> response parameters: bldg_id
 </ul>
 </blockquote></details>
 <li> add_room
 <details><blockquote>
 <ul>
-<li> status: undesigned
+<li> status: designed
 <li> url: base.url/db/api/add_room
+<li>request method: POST<li> example json request:
+<pre><code>{}
+</code></pre>
+<li> request json schema:
+<pre><code>{
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "title": "add_room",
+   "type": "object",
+   "description": "Add new room to the network.",
+   "properties": {
+      "name": {
+         "type": "string",
+         "description": "Name of the room, also unique, but modifiable. Optional."
+      },
+      "description": {
+         "type": "string",
+         "description": "Description of the room. Optional."
+      }
+   },
+   "required": []
+}
+</code></pre>
+<li> response parameters: room_id
 </ul>
 </blockquote></details>
 <li> add_sensor
 <details><blockquote>
 <ul>
-<li> status: undesigned
+<li> status: designed
 <li> url: base.url/db/api/add_sensor
+<li>request method: POST<li> example json request:
+<pre><code>{}
+</code></pre>
+<li> request json schema:
+<pre><code>{
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "title": "add_sensor",
+   "type": "object",
+   "description": "Add new sensor to the network.",
+   "properties": {
+      "name": {
+         "type": "string",
+         "description": "Name of the sensor, also unique, but modifiable. Optional."
+      },
+      "description": {
+         "type": "string",
+         "description": "Description of the sensor. Optional."
+      },
+      "room_id": {
+         "type": "string",
+         "description": "Id of the room this sensor belongs to."
+      },
+      "unit": {
+         "type": "string",
+         "description": "Units in which the sensor measures."
+      }
+   },
+   "required": [
+      "room_id",
+      "unit"
+   ]
+}
+</code></pre>
+<li> response parameters: sensor_id
 </ul>
 </blockquote></details>
 </ul>
 
 ### Log data
-These requests are for measured values into the database.
+These requests are for saving measured values into the database.
 <ul>
-<li> log
+<li> save_log
 <details><blockquote>
 <ul>
-<li> status: undesigned
-<li> url: base.url/db/api/log
+<li> status: designed
+<li> url: base.url/db/api/save_log
+<li>request method: POST<li> example json request:
+<pre><code>{}
+</code></pre>
+<li> request json schema:
+<pre><code>{
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "title": "sensor_logs",
+   "type": "object",
+   "description": "Save one log from a sensor to the database.",
+   "properties": {
+      "sensor_id": {
+         "type": "string",
+         "description": "The id of the corresponding sensor"
+      },
+      "log": {
+         "type": "object",
+         "description": "One sensor measurement",
+         "log": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "title": "log",
+            "type": "object",
+            "description": "One log from a sensor",
+            "properties": {
+               "timestamp": {
+                  "type": "number",
+                  "description": "Timestamp when the log was taken, in milliseconds from the Epoch"
+               },
+               "value": {
+                  "type": "number",
+                  "description": "The measured value"
+               }
+            },
+            "required": [
+               "timestamp",
+               "value"
+            ]
+         }
+      }
+   },
+   "required": [
+      "sensor_id",
+      "log"
+   ]
+}
+</code></pre>
+</ul>
+</blockquote></details>
+<li> save_logs
+<details><blockquote>
+<ul>
+<li> status: designed
+<li> url: base.url/db/api/save_logs
+<li>request method: POST<li> example json request:
+<pre><code>{}
+</code></pre>
+<li> request json schema:
+<pre><code>{
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "title": "sensor_logs",
+   "type": "object",
+   "description": "Save multiple logs from multiple sensors.",
+   "properties": {
+      "logs": {
+         "type": "array",
+         "description": "An array of the logs and the corresponding sensors",
+         "items": {
+            "save_log": {
+               "$schema": "http://json-schema.org/draft-07/schema#",
+               "title": "sensor_logs",
+               "type": "object",
+               "description": "Save one log from a sensor to the database.",
+               "properties": {
+                  "sensor_id": {
+                     "type": "string",
+                     "description": "The id of the corresponding sensor"
+                  },
+                  "log": {
+                     "type": "object",
+                     "description": "One sensor measurement",
+                     "log": {
+                        "$schema": "http://json-schema.org/draft-07/schema#",
+                        "title": "log",
+                        "type": "object",
+                        "description": "One log from a sensor",
+                        "properties": {
+                           "timestamp": {
+                              "type": "number",
+                              "description": "Timestamp when the log was taken, in milliseconds from the Epoch"
+                           },
+                           "value": {
+                              "type": "number",
+                              "description": "The measured value"
+                           }
+                        },
+                        "required": [
+                           "timestamp",
+                           "value"
+                        ]
+                     }
+                  }
+               },
+               "required": [
+                  "sensor_id",
+                  "log"
+               ]
+            }
+         }
+      }
+   },
+   "required": []
+}
+</code></pre>
 </ul>
 </blockquote></details>
 </ul>

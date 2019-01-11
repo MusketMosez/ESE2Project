@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "add_room",
+  "type": "object",
+  "description": "Add new room to the network.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the room, also unique, but modifiable. Optional."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the room. Optional."
+    }
+  },
+  "required": []
+}

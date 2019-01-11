@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "add_sensor",
+  "type": "object",
+  "description": "Add new sensor to the network.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the sensor, also unique, but modifiable. Optional."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the sensor. Optional."
+    },
+    "room_id": {
+      "type": "string",
+      "description": "Id of the room this sensor belongs to."
+    },
+    "unit": {
+      "type": "string",
+      "description": "Units in which the sensor measures."
+    }
+  },
+  "required": [
+    "room_id",
+    "unit"
+  ]
+}

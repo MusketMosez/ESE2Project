@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "sensor_logs",
+  "type": "object",
+  "description": "Save one log from a sensor to the database.",
+  "properties": {
+    "sensor_id": {
+      "type": "string",
+      "description": "The id of the corresponding sensor"
+    },
+    "log": {
+      "type": "object",
+      "description": "One sensor measurement",
+      "$ref": "file:log.json"
+    }
+  },
+  "required": [
+    "sensor_id",
+    "log"
+  ]
+}

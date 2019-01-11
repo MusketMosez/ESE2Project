@@ -9,22 +9,22 @@ BASE_URL = "base.url/db/api"
 
 
 def get_pp_json(json_dict):
-    '''
+    """
     Converts json to a pretty printable string.
     :param json_dict: the json as a dictionary
     :return: formatted json as a string
-    '''
+    """
     # from pprint import pformat
     # return pformat(schema, width=300, compact=False)
     return json.dumps(json_dict, indent=3)
 
 
 def create_cat_doc(category) -> list:
-    '''
+    """
     Generates documentation for all requests in one category.
     :param category: the category of the requests
     :return: formatted mD docs as a string
-    '''
+    """
     res = DbApiDocRes()
     cat_doc = []
     cat_doc += "<ul>\n"
@@ -53,7 +53,7 @@ def create_cat_doc(category) -> list:
                 cat_doc += get_pp_json(get_schema(request))
                 cat_doc += "\n</code></pre>\n"
                 if "response" in details:
-                    cat_doc += "<li> parameters: %s\n" % ", ".join(details["response"])
+                    cat_doc += "<li> response parameters: %s\n" % ", ".join(details["response"])
         cat_doc += "</ul>\n"
         cat_doc += "</blockquote></details>\n"
     cat_doc += "</ul>\n"
@@ -61,9 +61,9 @@ def create_cat_doc(category) -> list:
 
 
 def generate_doc() -> None:
-    '''
+    """
     Autogenerates documentation fro the DB API, given json schemas exist and dummy data is created.
-    '''
+    """
     with open("db_api_doc_template.md", "r") as template, open("db_api_doc.md", "w+") as doc:
         for line in template:
             # Check for lines with <!---request_name-->
