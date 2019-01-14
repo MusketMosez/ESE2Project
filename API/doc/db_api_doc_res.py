@@ -72,7 +72,8 @@ class DbApiDocRes:
             "set_sampling_f": {
                 "status": "UNDESIGNED"
             },
-        }, "control_controllers": {}, "write_add": {
+        }, "control_controllers": {
+        }, "write_add": {
             "add_bldg": {
                 "status": "DESIGNED",
                 "request": "POST",
@@ -101,8 +102,6 @@ class DbApiDocRes:
         }, "authentication": {}}
 
         # Dummy data for example jsons
-        self.jsonFile_to_dict = {}
-
         self.jsonFile_to_dict["room"] = {
             "id": ["b02r01", "b01r02", "b03r03"],
             "name": ["Lab012", "Lab090", "Lab876"],
@@ -235,12 +234,41 @@ class DbApiDocRes:
             "unit": ["percents of BoydOrr", "CELSIUS", ""]
         }
 
-        self.jsonFile_to_dict["add_bldg"] = {}
-        self.jsonFile_to_dict["add_room"] = {}
-        self.jsonFile_to_dict["add_sensor"] = {}
+        self.jsonFile_to_dict["add_bldg"] = {
+            "name": ["KELVIN bldg", "RANKIN bldg", "BOYD ORR bldg"],
+            "description": ["Main bldg of physics department", "Main lab bldg of Engineering department",
+                            "Main bldg of Engineering department"]
+        }
 
-        self.jsonFile_to_dict["save_log"] = {}
-        self.jsonFile_to_dict["save_logs"] = {}
+        self.jsonFile_to_dict["add_room"] = {
+            "name": ["Lab017", "Lab050", "Lab734"],
+            "description": ["Physics lab on first floor of KELVIN building",
+                            "Physics lab on third floor of RANKINE building",
+                            "Physics lab on second floor of JAMES WATT SOUTH building"]
+        }
+
+        self.jsonFile_to_dict["add_sensor"] = {
+            "name": ["sensor1", "sensor2", "sensor3"],
+            "Description": ["Relative humidity sensor", "Thermometer/humidity sensor", "Light dependent resistor"],
+            "room_id": [room["id"][0], room["id"][1], room["id"][2]],
+            "unit": ["KELVIN", "PERCENT", "VOLTS"]
+        }
+
+        self.jsonFile_to_dict["save_log"] = {
+            "sensor_id": [sensor["id"][0], sensor["id"][1], sensor["id"][2]],
+            "log": [self.get_value_from_dict("log", 0),
+                    self.get_value_from_dict("log", 1),
+                    self.get_value_from_dict("log", 2)]
+        }
+
+        self.jsonFile_to_dict["save_logs"] = {
+            "logs": [[self.get_value_from_dict("save_log", 0),
+                      self.get_value_from_dict("save_log", 1)],
+                     [self.get_value_from_dict("save_log", 2),
+                      self.get_value_from_dict("save_log", 0)],
+                     [self.get_value_from_dict("save_log", 2),
+                      self.get_value_from_dict("sensor", 1)]]
+        }
 
     def get_value_from_dict(self, filename, i=0):
         exp_json = {}

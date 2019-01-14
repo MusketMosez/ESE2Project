@@ -11,6 +11,5 @@
         "$ref": "file:save_log.json"
       }
     }
-  },
-  "required": []
+  }
 }

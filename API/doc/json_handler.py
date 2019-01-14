@@ -1,8 +1,8 @@
 import json
+import os
 from re import match
 
-from jsonschema import validate, RefResolver
-import os
+from jsonschema import validate, RefResolver, exceptions
 
 
 def get_example_json(filename, res) -> dict:
@@ -23,8 +23,11 @@ def get_example_json(filename, res) -> dict:
     j_resolver = RefResolver(schemas_path, j_schema)
     try:
         validate(example_json, j_schema, resolver=j_resolver)
-    except:
-        raise Exception("Mock data for {} is out-of-date".format(filename))
+    except exceptions.ValidationError as e:
+        raise Exception(
+            "Mock data for {} is incorrect or out-of-date.\nThe problem: {}\nGiven example json: {}".format(filename,
+                                                                                                            e.message,
+                                                                                                            example_json))
 
     return example_json
 

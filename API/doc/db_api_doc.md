@@ -922,7 +922,10 @@ e.g. new buildings, rooms and sensors.
 <li> status: designed
 <li> url: base.url/db/api/add_bldg
 <li>request method: POST<li> example json request:
-<pre><code>{}
+<pre><code>{
+   "name": "KELVIN bldg",
+   "description": "Main bldg of physics department"
+}
 </code></pre>
 <li> request json schema:
 <pre><code>{
@@ -939,8 +942,7 @@ e.g. new buildings, rooms and sensors.
          "type": "string",
          "description": "Description of the building. Optional."
       }
-   },
-   "required": []
+   }
 }
 </code></pre>
 <li> response parameters: bldg_id
@@ -952,7 +954,10 @@ e.g. new buildings, rooms and sensors.
 <li> status: designed
 <li> url: base.url/db/api/add_room
 <li>request method: POST<li> example json request:
-<pre><code>{}
+<pre><code>{
+   "name": "Lab017",
+   "description": "Physics lab on first floor of KELVIN building"
+}
 </code></pre>
 <li> request json schema:
 <pre><code>{
@@ -969,8 +974,7 @@ e.g. new buildings, rooms and sensors.
          "type": "string",
          "description": "Description of the room. Optional."
       }
-   },
-   "required": []
+   }
 }
 </code></pre>
 <li> response parameters: room_id
@@ -982,7 +986,12 @@ e.g. new buildings, rooms and sensors.
 <li> status: designed
 <li> url: base.url/db/api/add_sensor
 <li>request method: POST<li> example json request:
-<pre><code>{}
+<pre><code>{
+   "name": "sensor1",
+   "Description": "Relative humidity sensor",
+   "room_id": "b02r01",
+   "unit": "KELVIN"
+}
 </code></pre>
 <li> request json schema:
 <pre><code>{
@@ -1028,7 +1037,13 @@ These requests are for saving measured values into the database.
 <li> status: designed
 <li> url: base.url/db/api/save_log
 <li>request method: POST<li> example json request:
-<pre><code>{}
+<pre><code>{
+   "sensor_id": "b02r01s01",
+   "log": {
+      "timestamp": 54,
+      "value": 79.878
+   }
+}
 </code></pre>
 <li> request json schema:
 <pre><code>{
@@ -1080,7 +1095,24 @@ These requests are for saving measured values into the database.
 <li> status: designed
 <li> url: base.url/db/api/save_logs
 <li>request method: POST<li> example json request:
-<pre><code>{}
+<pre><code>{
+   "logs": [
+      {
+         "sensor_id": "b02r01s01",
+         "log": {
+            "timestamp": 54,
+            "value": 79.878
+         }
+      },
+      {
+         "sensor_id": "b01r02s02",
+         "log": {
+            "timestamp": 65,
+            "value": 17.001
+         }
+      }
+   ]
+}
 </code></pre>
 <li> request json schema:
 <pre><code>{
@@ -1135,8 +1167,7 @@ These requests are for saving measured values into the database.
             }
          }
       }
-   },
-   "required": []
+   }
 }
 </code></pre>
 </ul>

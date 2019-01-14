@@ -12,6 +12,5 @@
       "type": "string",
       "description": "Description of the building. Optional."
     }
-  },
-  "required": []
+  }
 }
