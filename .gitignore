@@ -5,7 +5,10 @@
 
 # Python
 API/doc/__pycache__/
+*.pyc
 
+Django
+db.sqlite3
 
 # Random temp files
 API/Example_json_parser.txt
